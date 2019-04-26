@@ -48,5 +48,5 @@
 
 
     <!-- Backward-compatible version of ?android:attr/buttonBarButtonStyle -->
-    <style name="ButtonBarButton"/>
+    <style name="ButtonBarButton" />
 </resources>
