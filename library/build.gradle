@@ -1,6 +1,9 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'maven-publish'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+group = 'com.github.kaustavjaiswal'
 
 android {
     compileSdkVersion 28
@@ -73,51 +76,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "androidx.appcompat:appcompat:1.0.2"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-}
-
-apply plugin: 'com.bmuschko.nexus'
-
-modifyPom {
-    project {
-        name 'Droppy Popup Menu'
-        packaging 'aar'
-        description 'Cache library for Android applications'
-        url 'https://github.com/shehabic/droppy'
-        inceptionYear '2015'
-
-        scm {
-            url 'scm:git@github.com:shehabic/droppy.git'
-            connection 'scm:git@github.com:shehabic/droppy.git'
-            developerConnection 'scm:git@github.com:shehabic/droppy.git'
-        }
-
-        licenses {
-            license {
-                name 'The Apache Software License, Version 2.0'
-                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                distribution 'repo'
-            }
-        }
-
-        developers {
-            developer {
-                id 'shehabic'
-                name 'Mohamed Shehab'
-                email 'shehabic@gmail.com'
-            }
-        }
-    }
-}
-
-extraArchive {
-    sources = false
-    tests = true
-}
-
-nexus {
-    sign = true
-    repositoryUrl = 'https://oss.sonatype.org/services/local/staging/deploy/maven2'
-    snapshotRepositoryUrl = 'http://oss.sonatype.org/content/repositories/snapshots'
 }
 
 repositories {
