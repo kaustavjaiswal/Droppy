@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,10 +14,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-
 import com.shehabic.droppy.animations.DroppyAnimation;
 import com.shehabic.droppy.views.DroppyMenuContainerView;
-
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,13 +51,13 @@ public class DroppyMenuPopup {
     }
 
     protected DroppyMenuPopup(
-        Context mContext,
-        View parentMenuItem,
-        List<DroppyMenuItemInterface> menuItem,
-        DroppyClickCallbackInterface droppyClickCallbackInterface,
-        boolean addTriggerOnAnchorClick,
-        int popupMenuLayoutResourceId,
-        OnDismissCallback onDismissCallback
+            Context mContext,
+            View parentMenuItem,
+            List<DroppyMenuItemInterface> menuItem,
+            DroppyClickCallbackInterface droppyClickCallbackInterface,
+            boolean addTriggerOnAnchorClick,
+            int popupMenuLayoutResourceId,
+            OnDismissCallback onDismissCallback
     ) {
         this.mContext = mContext;
         this.anchor = parentMenuItem;
@@ -318,6 +317,8 @@ public class DroppyMenuPopup {
         protected int offsetX = -20;
         protected int offsetY = 25;
         protected DroppyAnimation droppyAnimation;
+        protected int size = 12;
+        protected Typeface typeface;
 
         public Builder(Context ctx, View parentMenuItem) {
             this.ctx = ctx;
@@ -366,6 +367,12 @@ public class DroppyMenuPopup {
 
         public Builder setPopupAnimation(DroppyAnimation droppyAnimation) {
             this.droppyAnimation = droppyAnimation;
+            return this;
+        }
+
+        public Builder setTypefaceAndSize(Typeface typeface, int size) {
+            this.typeface = typeface;
+            this.size = size;
             return this;
         }
 
