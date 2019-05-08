@@ -1,5 +1,6 @@
 package com.shehabic.droppy
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
@@ -38,8 +39,6 @@ open class DroppyMenuPopup constructor(
     var offsetX: Int = 0
     var offsetY: Int = 0
     var popupAnimation: DroppyAnimation? = null
-        set(value) = setPopupAnimationValue(value)
-
     val menuView: View?
         get() = mPopupView
 
@@ -119,9 +118,9 @@ open class DroppyMenuPopup constructor(
     }
 
     fun detachPopupView() {
-        if (mPopupView!!.parent != null) {
+        if (mPopupView.parent != null) {
             try {
-                (mPopupView!!.parent as ViewGroup).removeView(mPopupView)
+                (mPopupView.parent as ViewGroup).removeView(mPopupView)
             } catch (e: Exception) {
 
             }
@@ -157,14 +156,14 @@ open class DroppyMenuPopup constructor(
     @JvmOverloads
     fun render(forceRender: Boolean = false) {
         if (forceRender) {
-            if ((mPopupView as ViewGroup).getChildCount() > 0) {
+            if ((mPopupView as ViewGroup).childCount > 0) {
                 (mPopupView as ViewGroup).removeAllViews()
             }
             mPopupView = com.shehabic.droppy.views.DroppyMenuPopupView(mContext)
             droppyMenuContainer = DroppyMenuContainerView(mContext)
-            mPopupView!!.addView(droppyMenuContainer)
+            mPopupView.addView(droppyMenuContainer)
             val lp = FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            mPopupView!!.setLayoutParams(lp)
+            mPopupView.layoutParams = lp
             mContentView = mPopupView
             var i = 0
             for (droppyMenuItem in this.menuItems) {
@@ -220,13 +219,14 @@ open class DroppyMenuPopup constructor(
         this.popupAnimation = popupAnimation
     }
 
+    @SuppressLint("RtlHardcoded")
     fun adjustDropDownPosition(params: FrameLayout.LayoutParams, xOffset: Int, yOffset: Int) {
         val anchorPosition = anchorCoordinates
         var finalX = anchorPosition.x + xOffset
         val anchorHeight = anchor.getHeight()
         var finalY = anchorPosition.y + anchorHeight
         val screen = screenSize
-        val rightMargin = screen.x - (finalX + mPopupView!!.getMeasuredWidth())
+        val rightMargin = screen.x - (finalX + mPopupView.measuredWidth)
         if (rightMargin < 0) {
             finalX = screen.x - (mPopupWidth + xOffset)
         }
