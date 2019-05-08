@@ -155,9 +155,11 @@ open class DroppyMenuPopup constructor(
 
     @JvmOverloads
     fun render(forceRender: Boolean = false) {
-        if (forceRender) {
-            if ((mPopupView as ViewGroup).childCount > 0) {
-                (mPopupView as ViewGroup).removeAllViews()
+        if (!::mPopupView.isInitialized || forceRender) {
+            if (::mPopupView.isInitialized) {
+                if ((mPopupView as ViewGroup).childCount > 0) {
+                    (mPopupView as ViewGroup).removeAllViews()
+                }
             }
             mPopupView = com.shehabic.droppy.views.DroppyMenuPopupView(mContext)
             droppyMenuContainer = DroppyMenuContainerView(mContext)
@@ -269,13 +271,11 @@ open class DroppyMenuPopup constructor(
 
         fun addMenuItem(droppyMenuItem: DroppyMenuItemInterface): Builder {
             menuItems.add(droppyMenuItem)
-
             return this
         }
 
         fun addSeparator(): Builder {
             menuItems.add(DroppyMenuSeparator())
-
             return this
         }
 
@@ -343,7 +343,6 @@ open class DroppyMenuPopup constructor(
             } catch (e: Exception) {
 
             }
-
             return null
         }
 
@@ -352,7 +351,6 @@ open class DroppyMenuPopup constructor(
             popup.offsetX = offsetX
             popup.offsetY = offsetY
             popup.popupAnimation = droppyAnimation
-
             return popup
         }
     }
@@ -360,13 +358,11 @@ open class DroppyMenuPopup constructor(
     companion object {
 
         fun getActivity(context: Context): Activity? {
-
             if (context is Activity) {
                 return context
             } else if (context is ContextWrapper) {
                 return getActivity(context.baseContext)
             }
-
             return null
         }
     }

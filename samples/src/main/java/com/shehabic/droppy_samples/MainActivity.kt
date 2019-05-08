@@ -14,6 +14,7 @@ import com.shehabic.droppy.DroppyMenuItem
 import com.shehabic.droppy.DroppyMenuPopup
 import com.shehabic.droppy.animations.DroppyFadeInAnimation
 import com.shehabic.droppy.animations.DroppyScaleAnimation
+import com.shehabic.droppy.model.FontObject
 
 /**
  * Created by shehabic on 3/21/15.
@@ -47,7 +48,7 @@ open class MainActivity : Activity(), DroppyMenuPopup.OnDismissCallback, DroppyC
         })
     }
 
-    override fun onCreate(savedInstanceState: Bundle) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn = findViewById(R.id.button)
@@ -73,6 +74,7 @@ open class MainActivity : Activity(), DroppyMenuPopup.OnDismissCallback, DroppyC
                 .addSeparator()
                 .setOnDismissCallback(this)
                 .setOnClick(this)
+                .addFont(FontObject("", "Raleway-Italic", 20))
                 .addMenuItem(DroppyMenuItem("Third Item", R.drawable.ic_launcher))
                 .setPopupAnimation(DroppyFadeInAnimation())
                 .triggerOnAnchorClick(false)
