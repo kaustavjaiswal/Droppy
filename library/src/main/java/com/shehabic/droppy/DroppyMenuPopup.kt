@@ -225,7 +225,7 @@ open class DroppyMenuPopup constructor(
         val anchorPosition = anchorCoordinates
         var finalX = anchorPosition.x + xOffset
         val anchorHeight = anchor.height
-        var finalY = anchorPosition.y
+        var finalY = anchorPosition.y + yOffset
         val screen = screenSize
         val rightMargin = screen.x - (finalX + mPopupView.measuredWidth)
         if (rightMargin < 0) {
