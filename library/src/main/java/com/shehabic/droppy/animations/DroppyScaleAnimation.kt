@@ -9,8 +9,14 @@ import com.shehabic.droppy.views.DroppyMenuPopupView
 
 class DroppyScaleAnimation : DroppyAnimation {
 
-    override fun animateHide(popup: DroppyMenuPopup, popupView: DroppyMenuPopupView, anchor: View, itemSelected: Boolean) {
-        val scaleAnimation = ScaleAnimation(1f, 0f, 1f, 0f, Animation.RELATIVE_TO_SELF, 0.25f, Animation.RELATIVE_TO_SELF, 1f)
+    override fun animateHide(
+        popup: DroppyMenuPopup,
+        popupView: DroppyMenuPopupView,
+        anchor: View,
+        itemSelected: Boolean
+    ) {
+        val scaleAnimation =
+            ScaleAnimation(1f, 0f, 1f, 0f, Animation.RELATIVE_TO_SELF, 0.25f, Animation.RELATIVE_TO_SELF, 1f)
         scaleAnimation.duration = ANIMATION_DURATION.toLong()
         scaleAnimation.fillAfter = true
         scaleAnimation.setAnimationListener(object : Animation.AnimationListener {
@@ -23,13 +29,13 @@ class DroppyScaleAnimation : DroppyAnimation {
             override fun onAnimationEnd(animation: Animation) {
                 popup.hideAnimationCompleted(itemSelected)
             }
-
         })
         popupView.startAnimation(scaleAnimation)
     }
 
     override fun animateShow(popup: DroppyMenuPopupView, anchor: View) {
-        val scaleAnimation = ScaleAnimation(0f, 1f, 0f, 1f, Animation.RELATIVE_TO_SELF, 0.25f, Animation.RELATIVE_TO_SELF, 1f)
+        val scaleAnimation =
+            ScaleAnimation(0f, 1f, 0f, 1f, Animation.RELATIVE_TO_SELF, 0.25f, Animation.RELATIVE_TO_SELF, 1f)
         scaleAnimation.duration = ANIMATION_DURATION.toLong()
         scaleAnimation.fillAfter = true
         popup.startAnimation(scaleAnimation)

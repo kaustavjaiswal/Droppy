@@ -35,7 +35,6 @@ open class DroppyMenuItem : DroppyMenuItemAbstract {
 
     constructor(title: String, iconResourceId: Int) {
         initMenuItem(title, iconResourceId)
-
     }
 
     fun setIcon(iconDrawable: Drawable) {

@@ -10,5 +10,4 @@ interface DroppyAnimation {
     fun animateShow(popup: DroppyMenuPopupView, anchor: View)
 
     fun animateHide(popup: DroppyMenuPopup, popupView: DroppyMenuPopupView, anchor: View, itemSelected: Boolean)
-
 }

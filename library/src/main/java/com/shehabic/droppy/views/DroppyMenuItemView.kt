@@ -10,7 +10,11 @@ import com.shehabic.droppy.R
 /**
  * Created by shehabic on 3/7/15.
  */
-class DroppyMenuItemView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = R.attr.droppyMenuItemStyle) : LinearLayout(context, attrs, defStyleAttr) {
+class DroppyMenuItemView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = R.attr.droppyMenuItemStyle
+) : LinearLayout(context, attrs, defStyleAttr) {
 
     init {
 
@@ -27,8 +31,14 @@ class DroppyMenuItemView @JvmOverloads constructor(context: Context, attrs: Attr
         var lp = layoutParams
         minimumWidth = minWidth.toInt()
         minimumHeight = minHeight.toInt()
-        val width = a.getLayoutDimension(R.styleable.DroppyMenuItemView_android_layout_width, ViewGroup.LayoutParams.MATCH_PARENT)
-        val height = a.getLayoutDimension(R.styleable.DroppyMenuItemView_android_layout_height, ViewGroup.LayoutParams.WRAP_CONTENT)
+        val width = a.getLayoutDimension(
+            R.styleable.DroppyMenuItemView_android_layout_width,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+        val height = a.getLayoutDimension(
+            R.styleable.DroppyMenuItemView_android_layout_height,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         if (lp == null) {
             lp = ViewGroup.LayoutParams(width, height)
         } else {
@@ -38,10 +48,22 @@ class DroppyMenuItemView @JvmOverloads constructor(context: Context, attrs: Attr
         isClickable = a.getBoolean(R.styleable.DroppyMenuItemView_android_clickable, defaultIsClickable)
         orientation = LinearLayout.HORIZONTAL
         gravity = a.getInteger(R.styleable.DroppyMenuItemView_android_gravity, Gravity.CENTER_VERTICAL)
-        val paddingTop = a.getDimension(R.styleable.DroppyMenuItemView_android_paddingTop, (resources.getDimension(R.dimen.default_menu_item_paddingTop).toInt()).toFloat()).toInt()
-        val paddingBottom = a.getDimension(R.styleable.DroppyMenuItemView_android_paddingBottom, (resources.getDimension(R.dimen.default_menu_item_paddingBottom).toInt()).toFloat()).toInt()
-        val paddingLeft = a.getDimension(R.styleable.DroppyMenuItemView_android_paddingLeft, (resources.getDimension(R.dimen.default_menu_item_paddingLeft).toInt()).toFloat()).toInt()
-        val paddingRight = a.getDimension(R.styleable.DroppyMenuItemView_android_paddingRight, (resources.getDimension(R.dimen.default_menu_item_paddingRight).toInt()).toFloat()).toInt()
+        val paddingTop = a.getDimension(
+            R.styleable.DroppyMenuItemView_android_paddingTop,
+            (resources.getDimension(R.dimen.default_menu_item_paddingTop).toInt()).toFloat()
+        ).toInt()
+        val paddingBottom = a.getDimension(
+            R.styleable.DroppyMenuItemView_android_paddingBottom,
+            (resources.getDimension(R.dimen.default_menu_item_paddingBottom).toInt()).toFloat()
+        ).toInt()
+        val paddingLeft = a.getDimension(
+            R.styleable.DroppyMenuItemView_android_paddingLeft,
+            (resources.getDimension(R.dimen.default_menu_item_paddingLeft).toInt()).toFloat()
+        ).toInt()
+        val paddingRight = a.getDimension(
+            R.styleable.DroppyMenuItemView_android_paddingRight,
+            (resources.getDimension(R.dimen.default_menu_item_paddingRight).toInt()).toFloat()
+        ).toInt()
         setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom)
 
         val background = a.getDrawable(R.styleable.DroppyMenuItemView_android_background)

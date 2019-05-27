@@ -17,16 +17,16 @@ import com.shehabic.droppy.model.FontObject
 import com.shehabic.droppy.model.globalFont
 import com.shehabic.droppy.views.DroppyMenuContainerView
 import com.shehabic.droppy.views.DroppyMenuPopupView
-import java.util.*
+import java.util.ArrayList
 
 open class DroppyMenuPopup constructor(
-        var mContext: Context,
-        var anchor: View,
-        menuItem: List<DroppyMenuItemInterface>,
-        var droppyClickCallbackInterface: DroppyClickCallbackInterface?,
-        addTriggerOnAnchorClick: Boolean,
-        var popupMenuLayoutResourceId: Int,
-        var mOnDismissCallback: OnDismissCallback?
+    var mContext: Context,
+    var anchor: View,
+    menuItem: List<DroppyMenuItemInterface>,
+    var droppyClickCallbackInterface: DroppyClickCallbackInterface?,
+    addTriggerOnAnchorClick: Boolean,
+    var popupMenuLayoutResourceId: Int,
+    var mOnDismissCallback: OnDismissCallback?
 ) {
     var menuItems: List<DroppyMenuItemInterface> = ArrayList()
     var mContentView: View? = null
@@ -124,7 +124,6 @@ open class DroppyMenuPopup constructor(
             } catch (e: Exception) {
 
             }
-
         }
     }
 
@@ -161,7 +160,7 @@ open class DroppyMenuPopup constructor(
                     (mPopupView as ViewGroup).removeAllViews()
                 }
             }
-            mPopupView = com.shehabic.droppy.views.DroppyMenuPopupView(mContext)
+            mPopupView = DroppyMenuPopupView(mContext)
             droppyMenuContainer = DroppyMenuContainerView(mContext)
             mPopupView.addView(droppyMenuContainer)
             val lp = FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
@@ -225,8 +224,8 @@ open class DroppyMenuPopup constructor(
     fun adjustDropDownPosition(params: FrameLayout.LayoutParams, xOffset: Int, yOffset: Int) {
         val anchorPosition = anchorCoordinates
         var finalX = anchorPosition.x + xOffset
-        val anchorHeight = anchor.getHeight()
-        var finalY = anchorPosition.y + anchorHeight
+        val anchorHeight = anchor.height
+        var finalY = anchorPosition.y + (anchorHeight/2)
         val screen = screenSize
         val rightMargin = screen.x - (finalX + mPopupView.measuredWidth)
         if (rightMargin < 0) {
@@ -240,7 +239,6 @@ open class DroppyMenuPopup constructor(
         params.leftMargin = Math.max(0, finalX)
         params.topMargin = Math.max(0, finalY)
         params.gravity = Gravity.LEFT or Gravity.TOP
-
 
         val maxDistanceAbove = anchorPosition.y
         val maxDistanceBelow = screen.y - anchorHeight - anchorPosition.y - offsetY
@@ -347,7 +345,15 @@ open class DroppyMenuPopup constructor(
         }
 
         fun build(): DroppyMenuPopup {
-            val popup = DroppyMenuPopup(ctx, parentMenuItem, menuItems, callbackInterface, triggerOnAnchorClick, -1, onDismissCallback)
+            val popup = DroppyMenuPopup(
+                ctx,
+                parentMenuItem,
+                menuItems,
+                callbackInterface,
+                triggerOnAnchorClick,
+                -1,
+                onDismissCallback
+            )
             popup.offsetX = offsetX
             popup.offsetY = offsetY
             popup.popupAnimation = droppyAnimation

@@ -9,7 +9,12 @@ import com.shehabic.droppy.views.DroppyMenuPopupView
 
 class DroppyFadeInAnimation : DroppyAnimation {
 
-    override fun animateHide(popup: DroppyMenuPopup, popupView: DroppyMenuPopupView, anchor: View, itemSelected: Boolean) {
+    override fun animateHide(
+        popup: DroppyMenuPopup,
+        popupView: DroppyMenuPopupView,
+        anchor: View,
+        itemSelected: Boolean
+    ) {
         val alphaAnimation = AlphaAnimation(1f, 0f)
         alphaAnimation.duration = ANIMATION_DURATION.toLong()
         alphaAnimation.fillAfter = true
@@ -23,7 +28,6 @@ class DroppyFadeInAnimation : DroppyAnimation {
             override fun onAnimationEnd(animation: Animation) {
                 popup.hideAnimationCompleted(itemSelected)
             }
-
         })
         popupView.startAnimation(alphaAnimation)
     }

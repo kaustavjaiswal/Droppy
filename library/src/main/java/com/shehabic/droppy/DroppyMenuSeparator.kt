@@ -14,7 +14,6 @@ class DroppyMenuSeparator : DroppyMenuItemAbstract() {
         isClickable = false
     }
 
-
     override fun render(context: Context): View {
         if (renderedView == null) {
             renderedView = com.shehabic.droppy.views.DroppyMenuSeparatorView(context)

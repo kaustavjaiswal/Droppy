@@ -9,16 +9,23 @@ import com.shehabic.droppy.R
 /**
  * Created by shehabic on 3/8/15.
  */
-class DroppyMenuSeparatorView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = R.attr.droppyMenuSeparatorStyle) : LinearLayout(context, attrs, defStyleAttr) {
+class DroppyMenuSeparatorView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = R.attr.droppyMenuSeparatorStyle
+) : LinearLayout(context, attrs, defStyleAttr) {
 
     init {
 
         val a = context.obtainStyledAttributes(attrs, R.styleable.DroppyMenuSeparatorView, defStyleAttr, 0)
 
-        val defaultSeparatorBackground = getResources().getDrawable(R.drawable.droppy_separator_background)
-        val defaultHeight = getResources().getDimensionPixelSize(R.dimen.default_menu_separator_height)
-        var lp = getLayoutParams()
-        val width = a.getLayoutDimension(R.styleable.DroppyMenuSeparatorView_android_layout_width, ViewGroup.LayoutParams.MATCH_PARENT)
+        val defaultSeparatorBackground = resources.getDrawable(R.drawable.droppy_separator_background)
+        val defaultHeight = resources.getDimensionPixelSize(R.dimen.default_menu_separator_height)
+        var lp = layoutParams
+        val width = a.getLayoutDimension(
+            R.styleable.DroppyMenuSeparatorView_android_layout_width,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
         val height = a.getLayoutDimension(R.styleable.DroppyMenuSeparatorView_android_layout_height, defaultHeight)
         if (lp == null) {
             lp = ViewGroup.LayoutParams(width, height)
