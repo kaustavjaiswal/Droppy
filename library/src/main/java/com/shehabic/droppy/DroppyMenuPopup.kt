@@ -266,7 +266,7 @@ open class DroppyMenuPopup constructor(
         var triggerOnAnchorClick = true
         lateinit var onDismissCallback: OnDismissCallback
         var offsetX = -20
-        var offsetY = 25
+        var offsetY = 5
         lateinit var droppyAnimation: DroppyAnimation
 
         fun addMenuItem(droppyMenuItem: DroppyMenuItemInterface): Builder {
